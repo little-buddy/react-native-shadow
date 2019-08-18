@@ -34,8 +34,8 @@ function colorRgb(color) {
 export default (props: any) => {
   const { setting = {}, containerStyle, children } = props;
   const {
-    // width = 1,
-    // height = 1,
+    width: setWidth,
+    height: setHeight,
     color = '#000',
     border = 1,
     opacity = 1,
@@ -43,16 +43,20 @@ export default (props: any) => {
     y = 0,
   } = setting;
 
-  const [w, setW] = useState(0);
-  const [h, setH] = useState(0);
+  const [w, setW] = useState(setWidth || 0);
+  const [h, setH] = useState(setHeight || 0);
 
   const onLayout = ({
     nativeEvent: {
       layout: { width, height },
     },
   }) => {
-    w !== width && setW(width);
-    h !== height && setH(height);
+    if (!setWidth) {
+      w !== width && setW(width);
+    }
+    if (!setHeight) {
+      h !== height && setH(height);
+    }
   };
 
   let { radius = 1 } = setting;

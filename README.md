@@ -95,11 +95,12 @@ export default class VideoCell extends Component {
 			opacity:0.2,
 			x:0,
 			y:3,
-			style:{marginVertical:5}
 		}
+		
+		const containerStyle = {marginVertical:5}
 
 		return (
-			<BoxShadow setting={shadowOpt}>
+			<BoxShadow setting={shadowOpt} containerStyle={containerStyle}>
 				<TouchableHighlight style={{
 					position:"relative",
 					width: 160,
